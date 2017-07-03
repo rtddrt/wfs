@@ -47,7 +47,7 @@ namespace Wfs.WebApi.Filters
                 return;
             if (actionContext.ActionDescriptor.GetCustomAttributes<IgnoreAttribute>().Count > 0)
                 return;
-            if (!UserClaimsIdentity.IsAuthenticate())
+            if (!base.IsAuthorized(actionContext))
             {
                 HandleUnauthorizedRequest(actionContext); 
                 return;
