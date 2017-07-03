@@ -33,7 +33,8 @@ namespace Wfs.WebApi
         /// <returns></returns>
         public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            //return base.GrantResourceOwnerCredentials(context);
+            //支持跨域调用
+            context.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
             var username = context.UserName;
             var password = context.Password;
             Guid? userId;
